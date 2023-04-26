@@ -12,7 +12,7 @@ const ContextMenuType = {
 const useContextMenu = defineStore('contextmanu', () => {
   const { menu: globalMenu, show: globalShow, hide: globalHide } = useGlobalContextMenu()
   const { menu: iconMenu, show: iconShow, hide: iconHide } = useIconContextMenu()
-
+//easy to manage show and hide menu
   const MenusMap = {
     [ContextMenuType.Global]: { menus: toRef(globalMenu, 'menus'), show: globalShow, hide: globalHide },
     [ContextMenuType.Icon]: { menus: toRef(iconMenu, 'menus'), show: iconShow, hide: iconHide }

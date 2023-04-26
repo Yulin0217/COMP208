@@ -59,7 +59,7 @@ const onIconClick = (icon) => {
 }
 
 
-const onBeforeLeave = (target) => {
+/*const onBeforeLeave = (target) => {
   const { marginLeft, marginTop, width, height } = window.getComputedStyle(target);
   if (target.style) {
     target.style.left = target.offsetLeft - parseFloat(marginLeft, 10) + "px"
@@ -68,7 +68,8 @@ const onBeforeLeave = (target) => {
     target.style.height = height
   }
 
-}
+}*/
+
 
 const onMouseup = (event, icon) => {
   contextmenu.updatePosition(event)

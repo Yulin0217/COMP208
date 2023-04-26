@@ -38,7 +38,7 @@ const getIcon = async () => {
   })
 
   const content = response.data.data
-
+  //get website name
   formValue.value.name = content?.name
   formValue.value.text = content?.name.slice(0, 3).toUpperCase()
 

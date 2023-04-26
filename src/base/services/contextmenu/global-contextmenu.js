@@ -20,7 +20,7 @@ const useGlobalContextMenu = defineStore('gloabl_contextmanu', () => {
   const menus = computed(() => ([
     { label: localize('contextMenu.background.change'), onClick: update, type: MenuItemType.Normal },
     { label: localize('contextMenu.icon.add'), onClick: showAddModal, type: MenuItemType.Normal },
-    { label: localize('contextMenu.config.save'), onClick: save, show: user.login, type: MenuItemType.Normal },
+    //{ label: localize('contextMenu.config.save'), onClick: save, show: user.login, type: MenuItemType.Normal },
     { label: localize('contextMenu.setting'), onClick: showConfig, type: MenuItemType.Normal },
   ]))
 

@@ -9,7 +9,7 @@ import cls from 'classnames'
 
 const { search, doSearch, getActiveEngine } = useSearch()
 const { localize } = useNLS()
-
+//input
 const active = ref(false)
 const listRef = ref()
 const inputValue = ref()
@@ -18,9 +18,10 @@ const showEngineModal = ref(false)
 
 const showList = () => active.value = true
 const hideList = () => active.value = false
-
+//select engine
 const engines = computed(() => search.engine.filter(engine => engine.selected))
 const activeEngine = computed(() => getActiveEngine())
+//the selected engine
 const checked = computed(() => {
   const value = []
   for (let engine of search.engine) {
@@ -31,7 +32,7 @@ const checked = computed(() => {
 
   return value
 })
-
+//check the select engine
 const handleEngineCheck = (value) => {
   if (!value.length) {
     return
@@ -51,7 +52,7 @@ const handleEngineCheck = (value) => {
 
 const onEngineClick = () => {
   showList()
-
+//when click engine logo show the showlist
   const onDocumentClick = (event) => {
     const target = event.target
 
@@ -75,7 +76,7 @@ const onEngineClick = () => {
 }
 
 const listClassName = computed(() => cls('search-engine-list', { active: active.value }))
-
+// run the search
 const handleSearch = () => {
   const query = inputValue.value || ''
   doSearch(query)
@@ -92,7 +93,7 @@ const changeEngine = (engine) => {
 const showAddEngineModal = () => {
   showEngineModal.value = true
 }
-
+//get the search engine logo
 const iconUrl = (engine) => {
   if (!engine) {
     return

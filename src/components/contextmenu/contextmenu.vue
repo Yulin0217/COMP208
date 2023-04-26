@@ -10,26 +10,34 @@ import cls from 'classnames'
 import { isNil } from 'lodash';
 
 const ComponentsMap = {
+    //separator line
   [MenuItemType.Separator]: Separator,
+    //homepage menu
   [MenuItemType.Normal]: MenuItem,
+    //icon menu
   [MenuItemType.Layout]: Layout
 }
 
+//hide: variable : show
 const { menu, hide } = useContextMenu()
 
 const contextMenuRef = ref()
 
+//when active is show, show menu
 const classname = computed(() => cls('contextmenu', { active: menu.show }))
 const style = computed(() => ({ top: `${menu.position.y}px`, left: `${menu.position.x}px` }))
+//show when only needed
 const menus = computed(() => menu.menus.filter(item => isNil(item.show) ? true : item.show))
 
 const registerEvent = () => {
+    //check whether menu is show
   const onDocumentClick = (event) => {
     if (contextMenuRef.value) {
       const target = event.target
       if (contextMenuRef.value.contains(target)) {
         return
       }
+      //hide when clicked
       hide()
     }
   }
