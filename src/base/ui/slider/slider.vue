@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, toRefs, computed } from 'vue'
 import { NSlider } from 'naive-ui'
-//Father to child variable
+//Parent to child variable
 const props = defineProps({
   title: String,
   valueFormatter: Function,

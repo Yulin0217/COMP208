@@ -18,7 +18,7 @@ const percentFormatter = (value) => `${value}%`
 const sizeMax = computed(() => style.iconContainer.unit === IconContainerUnit.Px.value ? 2000 : 100)
 const sizeMin = computed(() => style.iconContainer.unit === IconContainerUnit.Px.value ? 900 : 40)
 const sizeFromatter = computed(() => style.iconContainer.unit === IconContainerUnit.Px.value ? pxFormatter : percentFormatter)
-
+//
 watch(() => style.iconContainer.unit, (value) => {
   if (value === IconContainerUnit.Px.value) {
     style.iconContainer.width = 1350

@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, toRefs } from 'vue'
 import { NSwitch } from 'naive-ui'
-
+//Father to child
 const props = defineProps({
   title: String,
   value: Boolean,

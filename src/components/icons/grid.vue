@@ -10,7 +10,7 @@ import { useGlobal } from '../../base/hooks/global';
 import { ContextMenuType } from '../../base/services/contextmenu/contextmenu';
 import Icon from './icon.vue'
 import Note from './note.vue'
-import Add from './add.vue'
+//Drag
 import Sortable from 'sortablejs'
 import cls from 'classnames'
 
@@ -34,7 +34,7 @@ const sorting = ref()
 const classname = computed(() => cls('icons-grid', { sorting: sorting.value }))
 
 const { icons: group } = toRefs(props)
-
+// Drag
 const onDragEnd = (event) => {
   const { oldIndex, newIndex } = event
 
@@ -42,7 +42,6 @@ const onDragEnd = (event) => {
 
   sorting.value = false
 }
-
 const onDragStart = () => {
   sorting.value = true
 }
