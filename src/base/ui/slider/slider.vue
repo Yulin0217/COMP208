@@ -1,6 +1,7 @@
 <script setup>
 import { defineProps, toRefs, computed } from 'vue'
 import { NSlider } from 'naive-ui'
+//Father to child variable
 const props = defineProps({
   title: String,
   valueFormatter: Function,
@@ -10,15 +11,16 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:value'])
-
+//Responsive
 const { title, valueFormatter, value, max } = toRefs(props)
-
+//Value formatter format unification
 const formatted = computed(() => {
   const formatter = valueFormatter.value ? valueFormatter.value : id => id
 
   return formatter(value.value)
 })
 
+//Update value
 const onValueChange = (value) => emit('update:value', value)
 
 </script>

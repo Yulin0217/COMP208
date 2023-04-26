@@ -7,7 +7,7 @@ const useBackground = defineStore('background', () => {
     url: 'https://files.codelife.cc/itab/defaultWallpaper/defaultWallpaper.webp',
     loading: false
   })
-
+//Asynchronous update
   const update = async () => {
     doUpate()
   }
