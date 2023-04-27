@@ -10,7 +10,7 @@ import { useGlobal } from '../../base/hooks/global';
 import { ContextMenuType } from '../../base/services/contextmenu/contextmenu';
 import Icon from './icon.vue'
 import Note from './note.vue'
-//Drag
+//Drag and drop
 import Sortable from 'sortablejs'
 import cls from 'classnames'
 
@@ -19,22 +19,21 @@ const props = defineProps({
   icons: Object
 })
 
-const IconMap = {
-  [IconType.Note]: Note,
-  [IconType.Link]: Icon
-}
-
+//Get contextmenu api from contextmenu
 const { contextmenu } = useGlobal()
-
+//Injecting values already provided from ancestor components
 const { showModal } = inject(IconsInjectKey)
 
+//Two responsive variables for the drag-and-drop sorting function.
 const gridRef = ref()
 const sorting = ref()
 
+//apply the style to the icon container.
 const classname = computed(() => cls('icons-grid', { sorting: sorting.value }))
-
+//Convert to a responsive object
 const { icons: group } = toRefs(props)
-// Drag
+
+// Drag and drop (Start and end)
 const onDragEnd = (event) => {
   const { oldIndex, newIndex } = event
 
@@ -45,7 +44,7 @@ const onDragEnd = (event) => {
 const onDragStart = () => {
   sorting.value = true
 }
-
+//When click show. If is "add" icon show add model, if url show website
 const onIconClick = (icon) => {
   if (icon.key === IconType.Add) {
     showModal()
@@ -59,18 +58,8 @@ const onIconClick = (icon) => {
 }
 
 
-/*const onBeforeLeave = (target) => {
-  const { marginLeft, marginTop, width, height } = window.getComputedStyle(target);
-  if (target.style) {
-    target.style.left = target.offsetLeft - parseFloat(marginLeft, 10) + "px"
-    target.style.top = target.offsetTop - parseFloat(marginTop, 10) + "px"
-    target.style.width = width
-    target.style.height = height
-  }
 
-}*/
-
-
+// Ready to show menu when right click
 const onMouseup = (event, icon) => {
   contextmenu.updatePosition(event)
   setTimeout(contextmenu.show, 0, ContextMenuType.Icon, icon)
