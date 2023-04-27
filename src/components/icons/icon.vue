@@ -19,8 +19,12 @@ const classname = () => {
   return cls('icons-item', `size-${sizeValue[0]}-${sizeValue[1]}`)
 }
 
+//Display type of the icon, either plain text, image or mixed mode
 const iconNameStyle = computed(() => ({ fontSize: `${style.icon.fontSize}px` }))
 
+//Dynamic calculation of text icon styles
+//Returns an object containing the background colour if it is available,
+//otherwise returns an empty object
 const calcBackground = (icon) => ({ backgroundColor: icon.backgroundColor ?? '#fff' })
 
 const handleIconClick = () => {

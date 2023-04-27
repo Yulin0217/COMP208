@@ -9,6 +9,7 @@ import Layout from './layout.vue'
 import cls from 'classnames'
 import { isNil } from 'lodash';
 
+//Store menu item types and corresponding components
 const ComponentsMap = {
     //separator line
   [MenuItemType.Separator]: Separator,
@@ -18,19 +19,19 @@ const ComponentsMap = {
   [MenuItemType.Layout]: Layout
 }
 
-//hide: variable : show
+//Get the relevant status and functions of the context menu
 const { menu, hide } = useContextMenu()
-
+//Calculating style classes for context menus
 const contextMenuRef = ref()
 
 //when active is show, show menu
 const classname = computed(() => cls('contextmenu', { active: menu.show }))
 const style = computed(() => ({ top: `${menu.position.y}px`, left: `${menu.position.x}px` }))
-//show when only needed
+//show when only needed Filter the menu items to be displayed
 const menus = computed(() => menu.menus.filter(item => isNil(item.show) ? true : item.show))
 
 const registerEvent = () => {
-    //check whether menu is show
+    //Listening to mouse click events across the page
   const onDocumentClick = (event) => {
     if (contextMenuRef.value) {
       const target = event.target
@@ -41,6 +42,7 @@ const registerEvent = () => {
       hide()
     }
   }
+  //Hide the context menu when mouse click other place
   window.addEventListener('mouseup', onDocumentClick, true)
 }
 

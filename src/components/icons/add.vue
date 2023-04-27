@@ -12,20 +12,26 @@ import cls from 'classnames'
 import { IconType } from '../../base/services/icons'
 import { useNLS } from '../../base/hooks/nls'
 
+//Get localisation and style information for the current application.
 const { localize } = useNLS()
 
+//Inject functions related to icon components,
+// including pop-up icon selector, add icon, hide icon selector
 const { modalShow, addIcon, hideModal } = inject(IconsInjectKey)
 const { style } = useStyle()
+//Storage form data
 const formValue = ref({})
+//Store the URL of the selected icon
 const iconSrc = ref()
 const iconType = ref(IconImageType.Text)
 
+//Calculating the style of text type icons
 const textIconStyle = computed(() => {
   if (formValue.value.backgroundColor) {
     return { backgroundColor: formValue.value.backgroundColor }
   }
 })
-
+//Calculate the style of the preview icon
 const calcPreviewClassname = (type) => cls('icon-preview', { active: iconType.value === type })
 
 const getIcon = async () => {
@@ -45,6 +51,7 @@ const getIcon = async () => {
   iconSrc.value = content?.src
 }
 
+//Handling changes to the preview icon type
 const handlePreviewTypeChange = (type) => {
   iconType.value = type
 }
