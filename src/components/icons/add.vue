@@ -51,6 +51,7 @@ const getIcon = async () => {
   iconSrc.value = content?.src
 }
 
+
 //Handling changes to the preview icon type
 const handlePreviewTypeChange = (type) => {
   iconType.value = type

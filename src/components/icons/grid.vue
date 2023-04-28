@@ -41,9 +41,11 @@ const onDragEnd = (event) => {
 
   sorting.value = false
 }
+
 const onDragStart = () => {
   sorting.value = true
 }
+
 //When click show. If is "add" icon show add model, if url show website
 const onIconClick = (icon) => {
   if (icon.key === IconType.Add) {
@@ -56,8 +58,6 @@ const onIconClick = (icon) => {
     window.open(url)
   }
 }
-
-
 
 // Ready to show menu when right click
 const onMouseup = (event, icon) => {
@@ -108,3 +108,4 @@ onMounted(() => {
   transition-duration: 0s;
 }
 </style>
+
